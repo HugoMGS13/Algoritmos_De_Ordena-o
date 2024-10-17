@@ -24,7 +24,9 @@ public class Cli {
 
         int quantidade = scan.nextInt();
 
-        if (quantidade != 10 || quantidade != 100 || quantidade != 1000 || quantidade != 10000){
+        if (quantidade == 10 || quantidade == 100 || quantidade == 1000 || quantidade == 10000){
+            System.out.println();
+        } else{
             System.out.println("Exceção: Digite um valor válido");
             System.exit(0);
         }
