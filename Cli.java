@@ -24,69 +24,149 @@ public class Cli {
 
         int quantidade = scan.nextInt();
 
+        if (quantidade != 10 || quantidade != 100 || quantidade != 1000 || quantidade != 10000){
+            System.out.println("Exceção: Digite um valor válido");
+            System.exit(0);
+        }
+
         int[] vetor = new int[quantidade];
 
         System.out.println("Você quer que os elementos do vetor sejam (Digite o número correspondente):\n1 - Aleatórios\n2 - Ordem Decrescente e aleatórios");
 
         int ordem = scan.nextInt();
+        try {
+            if (ordem == 1) {
 
-        if (ordem == 1) {
-
-            for (int i = 0; i < vetor.length; i++) {
-                vetor[i] = random.nextInt(100); // Gera números aleatórios com limite 50.
-            }
-            System.out.print("Vetor atual: [");
-            for (int elemento : vetor){
-                System.out.print(elemento + ", ");
-            }
-            System.out.print("]");
-
-            System.out.println();
-
-            System.out.println("Qual algoritmo de ordenação você deseja usar? (Digite o número correspondente):\n1 - BubbleSort\n2 - QuickSort");
-
-            int algo = scan.nextInt();
-
-            if (algo == 1) {
-
-                long tempoInicial = System.currentTimeMillis();
-
-                bubbleSort.Sort(vetor);
-
-                long tempoFinal = System.currentTimeMillis();
-
-                System.out.println("BubbleSort executado em = " + (tempoFinal - tempoInicial) + " ms");
-
-                System.out.println("O algoritmo fez " + bubbleSort.getComparacoes() + " comparações e " + bubbleSort.getTrocas() + " trocas.");
-
-                System.out.print("Vetor ordenado: [");
+                for (int i = 0; i < vetor.length; i++) {
+                    vetor[i] = random.nextInt(1000); // Gera números aleatórios com limite 50.
+                }
+                System.out.print("Vetor atual: [");
                 for (int elemento : vetor) {
                     System.out.print(elemento + ", ");
                 }
                 System.out.print("]");
 
-            }
+                System.out.println();
 
-            else if (algo == 2) {
+                System.out.println("Qual algoritmo de ordenação você deseja usar? (Digite o número correspondente):\n1 - BubbleSort\n2 - QuickSort");
 
-                long tempoInicial = System.currentTimeMillis();
+                int algo = scan.nextInt();
 
-                quickSort.Sort(vetor);
+                if (algo == 1) {
 
-                long tempoFinal = System.currentTimeMillis();
+                    long tempoInicial = System.currentTimeMillis();
 
-                System.out.println("QuickSort executado em = " + (tempoFinal - tempoInicial) + " ms");
+                    bubbleSort.Sort(vetor);
 
-                System.out.println("O algoritmo fez " + quickSort.getComparacoes() + " comparações e " + quickSort.getTrocas() + " trocas.");
+                    long tempoFinal = System.currentTimeMillis();
 
-                System.out.print("Vetor ordenado: [");
-                for (int elemento : vetor) {
+                    System.out.print("Vetor ordenado: [");
+                    for (int elemento : vetor) {
+                        System.out.print(elemento + ", ");
+                    }
+                    System.out.print("]");
+
+                    System.out.println();
+
+                    System.out.println("BubbleSort executado em = " + (tempoFinal - tempoInicial) + " ms");
+
+                    System.out.println("O algoritmo fez " + bubbleSort.getComparacoes() + " comparações e " + bubbleSort.getTrocas() + " trocas.");
+
+
+                } else if (algo == 2) {
+
+                    long tempoInicial = System.currentTimeMillis();
+
+                    quickSort.Sort(vetor);
+
+                    long tempoFinal = System.currentTimeMillis();
+
+                    System.out.print("Vetor ordenado: [");
+                    for (int elemento : vetor) {
+                        System.out.print(elemento + ", ");
+                    }
+                    System.out.print("]");
+
+                    System.out.println();
+
+                    System.out.println("QuickSort executado em = " + (tempoFinal - tempoInicial) + " ms");
+
+                    System.out.println("O algoritmo fez " + quickSort.getComparacoes() + " comparações e " + quickSort.getTrocas() + " trocas.");
+
+                }
+
+            } else if (ordem == 2) {
+
+                for (int i = 0; i < vetor.length; i++) {
+                    vetor[i] = random.nextInt(1000); // Gera números aleatórios com limite 100.
+                }
+
+                quickSort.Sort(vetor); // Ordena o vetor em ordem crescente
+
+                int[] vetorDecrescente = new int[quantidade]; //variável que irá armazenar o vetor em ordem decrescente
+
+                for (int i = 0; i < vetor.length; i++) { //Coloca o vetor em ordem decrescente na nova variável
+                    vetorDecrescente[i] = vetor[vetor.length - 1 - i];
+                }
+
+                System.out.print("Vetor atual: [");
+                for (int elemento : vetorDecrescente) {
                     System.out.print(elemento + ", ");
                 }
-                System.out.print("]");
-            }
 
+                System.out.print("]");
+
+                System.out.println();
+
+                System.out.println("Qual algoritmo de ordenação você deseja usar? (Digite o número correspondente):\n1 - BubbleSort\n2 - QuickSort");
+
+                int algo = scan.nextInt();
+
+                if (algo == 1) {
+
+                    long tempoInicial = System.currentTimeMillis();
+
+                    bubbleSort.Sort(vetorDecrescente);
+
+                    long tempoFinal = System.currentTimeMillis();
+
+                    System.out.print("Vetor ordenado: [");
+                    for (int elemento : vetor) {
+                        System.out.print(elemento + ", ");
+                    }
+                    System.out.print("]");
+
+                    System.out.println();
+
+                    System.out.println("BubbleSort executado em = " + (tempoFinal - tempoInicial) + " ms");
+
+                    System.out.println("O algoritmo fez " + bubbleSort.getComparacoes() + " comparações e " + bubbleSort.getTrocas() + " trocas.");
+
+                } else if (algo == 2) {
+
+                    long tempoInicial = System.currentTimeMillis();
+
+                    quickSort.Sort(vetorDecrescente);
+
+                    long tempoFinal = System.currentTimeMillis();
+
+                    System.out.print("Vetor ordenado: [");
+                    for (int elemento : vetor) {
+                        System.out.print(elemento + ", ");
+                    }
+                    System.out.print("]");
+
+                    System.out.println();
+
+                    System.out.println("QuickSort executado em = " + (tempoFinal - tempoInicial) + " ms");
+
+                    System.out.println("O algoritmo fez " + quickSort.getComparacoes() + " comparações e " + quickSort.getTrocas() + " trocas.");
+
+                }
+            }
         }
-
+        catch(Exception e){
+            System.out.println("Um erro inesperado aconteceu, tente novamente");
+        }
     }
 }
