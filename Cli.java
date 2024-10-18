@@ -20,6 +20,8 @@ public class Cli {
 
         SortAlgorithm bubbleSort = new BubbleSort();
 
+        SortAlgorithm countingSort = new CountingSort();
+
         System.out.println("Quantos valores de entrada desejas?\n- 10\n- 100\n- 1000\n- 10000");
 
         int quantidade = scan.nextInt();
@@ -50,7 +52,7 @@ public class Cli {
 
                 System.out.println();
 
-                System.out.println("Qual algoritmo de ordenação você deseja usar? (Digite o número correspondente):\n1 - BubbleSort\n2 - QuickSort");
+                System.out.println("Qual algoritmo de ordenação você deseja usar? (Digite o número correspondente):\n1 - BubbleSort\n2 - QuickSort\n3 - CountingSort");
 
                 int algo = scan.nextInt();
 
@@ -96,6 +98,26 @@ public class Cli {
                     System.out.println("O algoritmo fez " + quickSort.getComparacoes() + " comparações e " + quickSort.getTrocas() + " trocas.");
 
                 }
+                else if (algo == 3){
+                    long tempoInicial = System.currentTimeMillis();
+
+                    countingSort.Sort(vetor);
+
+                    long tempoFinal = System.currentTimeMillis();
+
+                    System.out.print("Vetor ordenado: [");
+                    for (int elemento : vetor) {
+                        System.out.print(elemento + ", ");
+                    }
+                    System.out.print("]");
+
+                    System.out.println();
+
+                    System.out.println("CountingSort executado em = " + (tempoFinal - tempoInicial) + " ms");
+
+                    System.out.println("O algoritmo fez " + countingSort.getComparacoes() + " comparações e " + countingSort.getTrocas() + " trocas.");
+
+                }
 
             } else if (ordem == 2) {
 
@@ -120,7 +142,7 @@ public class Cli {
 
                 System.out.println();
 
-                System.out.println("Qual algoritmo de ordenação você deseja usar? (Digite o número correspondente):\n1 - BubbleSort\n2 - QuickSort");
+                System.out.println("Qual algoritmo de ordenação você deseja usar? (Digite o número correspondente):\n1 - BubbleSort\n2 - QuickSort\n3 - CountingSort");
 
                 int algo = scan.nextInt();
 
@@ -163,6 +185,26 @@ public class Cli {
                     System.out.println("QuickSort executado em = " + (tempoFinal - tempoInicial) + " ms");
 
                     System.out.println("O algoritmo fez " + quickSort.getComparacoes() + " comparações e " + quickSort.getTrocas() + " trocas.");
+
+                }
+                else if (algo == 3){
+                    long tempoInicial = System.currentTimeMillis();
+
+                    countingSort.Sort(vetor);
+
+                    long tempoFinal = System.currentTimeMillis();
+
+                    System.out.print("Vetor ordenado: [");
+                    for (int elemento : vetor) {
+                        System.out.print(elemento + ", ");
+                    }
+                    System.out.print("]");
+
+                    System.out.println();
+
+                    System.out.println("CountingSort executado em = " + (tempoFinal - tempoInicial) + " ms");
+
+                    System.out.println("O algoritmo fez " + countingSort.getComparacoes() + " comparações e " + countingSort.getTrocas() + " trocas.");
 
                 }
             }
