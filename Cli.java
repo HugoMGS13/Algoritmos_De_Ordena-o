@@ -1,3 +1,5 @@
+//Discentes: Hugo Martins Gaspar da Silva e Polyana dos Santos Moraes
+//Matrículas: 202311140020 e 202311140012
 import java.util.Scanner;
 import java.util.Random;
 
